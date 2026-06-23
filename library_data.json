@@ -1,0 +1,23 @@
+[
+    {
+        "id": "101",
+        "title": "Harry potter",
+        "author": "J.K Rowling",
+        "quantity": 7,
+        "issued_to": []
+    },
+    {
+        "id": "1001",
+        "title": "python",
+        "author": "Guido van Rossum",
+        "quantity": 10,
+        "issued_to": []
+    },
+    {
+        "id": "1002",
+        "title": "Java",
+        "author": "James Gosling",
+        "quantity": 8,
+        "issued_to": []
+    }
+]
