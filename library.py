@@ -43,7 +43,7 @@ class Library:
                     for b in raw_data
                 ]
         except Exception as e:
-            print(f" Data load karne mein error aaya: {e}")
+            print(f" error occurs on data loading: {e}")
 
     def save_to_file(self):
         """Converts all Book objects into dictionary format and saves them into a JSON file."""
@@ -53,7 +53,7 @@ class Library:
                 json_ready_data = [book.to_dict() for book in self.__books]
                 json.dump(json_ready_data, file, indent=4)
         except Exception as e:
-            print(f" Data save karne mein error aaya: {e}")
+            print(f" error occurs on data saving: {e}")
     # =======================================================
 
     # Add Book
