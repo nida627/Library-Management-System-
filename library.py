@@ -1,5 +1,4 @@
 import json
-import os
 
 class Book:
     def __init__(self, book_id, title, author, quantity, issued_to=None):
@@ -30,20 +29,27 @@ class Library:
 
     # ==================== FILE HANDLING ====================
     def load_from_file(self):
-        """Loads data from the file and converts it into Book objects."""
-        if not os.path.exists(self.DATABASE_FILE):
-            return
-
         try:
-            with open(self.DATABASE_FILE, 'r') as file:
-                raw_data = json.load(file)
-                # Converting raw dictionary data back into a list of Book objects
-                self.__books = [
-                    Book(b["id"], b["title"], b["author"], b["quantity"], b.get("issued_to", [])) 
-                    for b in raw_data
-                ]
+            with open(self.DATABASE_FILE, "r") as file:
+             raw_data = json.load(file)
+
+            self.__books = [
+                Book(
+                    b["id"],
+                    b["title"],
+                    b["author"],
+                    b["quantity"],
+                    b.get("issued_to", [])
+                )
+                for b in raw_data
+            ]
+
+        except FileNotFoundError:
+        # Agar file nahi mili to kuch nahi karna
+         self.__books = []
+
         except Exception as e:
-            print(f" error occurs on data loading: {e}")
+         print(f"Error loading data: {e}")
 
     def save_to_file(self):
         """Converts all Book objects into dictionary format and saves them into a JSON file."""
